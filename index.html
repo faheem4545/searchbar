@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search bar</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: green;
+      }
+      .container{
+        background-color:yellow;
+        width: 20%;
+        margin: 0 auto;
+        padding: 20px;
+        height: 100vh;
+        margin:1rem 3rem;
+      }
+      h1 {
+        
+        margin: 1rem 0;
+      }
+      ul li {
+        list-style: none;
+        margin:1rem 0;
+      }
+      input {
+       
+        height: 2rem;
+        border: 1px solid black;
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+      }
+
+    </style>
+  </head>
+  <body>
+    <h1>Search the content</h1>
+    <div class="container">
+      <h1>Menu</h1>
+      <input type="text" id="search" placeholder="Search" />
+      <ul id="menu">
+        <li>Home</li>
+        <li>About</li>
+        <li>Services</li>
+        <li>Contact</li>
+    </div>
+    <script>
+      // Get the input element
+     const search = document.getElementById('search');
+      // Get the ul element
+      const menu = document.getElementById("menu");
+      //apply event listener to the input element
+      search.addEventListener('keyup',(e)=>{
+        //get the value of the input element
+        const searchValue = e.target.value.toLowerCase();
+        //get the list items
+        const menuItems = document.getElementsByTagName("li");
+        //convert the list items to an array
+        Array.from(menuItems).forEach((items)=>{
+          //get the text content of the list items
+          const itemsName = items.textContent;
+          //check if the text content of the list items matches the value of the input element
+          if(itemsName.toLowerCase().indexOf(searchValue)!= -1){
+            //if the text content of the list items matches the value of the input element, display the list items
+            items.style.display = "block";
+          }
+          else {
+            //if the text content of the list items does not match the value of the input element, hide the list items
+            items.style.display = "none";
+          }
+        })
+      })
+     
+     
+      </script>
+  </body>
+</html>
